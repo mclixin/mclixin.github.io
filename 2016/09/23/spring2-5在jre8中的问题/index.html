@@ -84,38 +84,16 @@
 
 
 
-<meta name="description" content="初次使用Solr
-通过这个简单的方法我们可以知道如何在Tomcat7中配置solr5.5
-Solr的环境搭建
-我使用的是Solr5.5+Tomcat7.0搭建。
-将solr5.5/server/solr-webapp目录下的webapp文件夹copy到tomcat7下webapps下，并将其改名为solr。
-修改tomcat7/webapps/solr/WEB-INF目录下的web.xml文件，如">
+<meta name="description" content="问题描述由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml]; nes">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Solr的初次使用">
-<meta property="og:url" content="http://yoursite.com/2016/05/31/Solr的初次使用/index.html">
+<meta property="og:title" content="spring2.5在jre8中的问题">
+<meta property="og:url" content="http://yoursite.com/2016/09/23/spring2-5在jre8中的问题/index.html">
 <meta property="og:site_name" content="Lucio's Blog">
-<meta property="og:description" content="初次使用Solr
-通过这个简单的方法我们可以知道如何在Tomcat7中配置solr5.5
-Solr的环境搭建
-我使用的是Solr5.5+Tomcat7.0搭建。
-将solr5.5/server/solr-webapp目录下的webapp文件夹copy到tomcat7下webapps下，并将其改名为solr。
-修改tomcat7/webapps/solr/WEB-INF目录下的web.xml文件，如">
-<meta property="og:image" content="http://yoursite.com/images/web-xml.png">
-<meta property="og:image" content="http://yoursite.com/images/admin-html.png">
-<meta property="og:image" content="http://yoursite.com/images/collect-floder.png">
-<meta property="og:image" content="http://yoursite.com/images/admin-core.png">
-<meta property="og:image" content="http://yoursite.com/images/core-successfully.png">
-<meta property="og:image" content="http://yoursite.com/images/segments.png">
-<meta property="og:updated_time" content="2016-09-23T03:26:57.407Z">
+<meta property="og:description" content="问题描述由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml]; nes">
+<meta property="og:updated_time" content="2016-09-23T03:43:49.992Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Solr的初次使用">
-<meta name="twitter:description" content="初次使用Solr
-通过这个简单的方法我们可以知道如何在Tomcat7中配置solr5.5
-Solr的环境搭建
-我使用的是Solr5.5+Tomcat7.0搭建。
-将solr5.5/server/solr-webapp目录下的webapp文件夹copy到tomcat7下webapps下，并将其改名为solr。
-修改tomcat7/webapps/solr/WEB-INF目录下的web.xml文件，如">
-<meta name="twitter:image" content="http://yoursite.com/images/web-xml.png">
+<meta name="twitter:title" content="spring2.5在jre8中的问题">
+<meta name="twitter:description" content="问题描述由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml]; nes">
 
 
 
@@ -133,7 +111,7 @@ Solr的环境搭建
   };
 </script>
 
-  <title> Solr的初次使用 | Lucio's Blog </title>
+  <title> spring2.5在jre8中的问题 | Lucio's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -253,7 +231,7 @@ Solr的环境搭建
             
             
               
-                Solr的初次使用
+                spring2.5在jre8中的问题
               
             
           </h1>
@@ -265,8 +243,8 @@ Solr的环境搭建
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-31T21:48:02+08:00" content="2016-05-31">
-              2016-05-31
+            <time itemprop="dateCreated" datetime="2016-09-23T11:25:48+08:00" content="2016-09-23">
+              2016-09-23
             </time>
           </span>
 
@@ -276,8 +254,8 @@ Solr的环境搭建
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/31/Solr的初次使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/31/Solr的初次使用/" itemprop="commentsCount"></span>
+                <a href="/2016/09/23/spring2-5在jre8中的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/23/spring2-5在jre8中的问题/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -300,37 +278,48 @@ Solr的环境搭建
       
 
       
-        <h1 id="初次使用Solr"><a href="#初次使用Solr" class="headerlink" title="初次使用Solr"></a>初次使用Solr</h1><hr>
-<p>通过这个简单的方法我们可以知道如何在Tomcat7中配置solr5.5</p>
-<h2 id="Solr的环境搭建"><a href="#Solr的环境搭建" class="headerlink" title="Solr的环境搭建"></a>Solr的环境搭建</h2><ol>
-<li>我使用的是Solr5.5+Tomcat7.0搭建。</li>
-<li>将solr5.5/server/solr-webapp目录下的webapp文件夹copy到tomcat7下webapps下，并将其改名为solr。</li>
-<li>修改tomcat7/webapps/solr/WEB-INF目录下的web.xml文件，如图：<br><img src="/images/web-xml.png" alt="web-xml"></li>
-<li>将solr5.5/server/lib/ext下的文件复制到Tomcat目录webapps/solr/WEB-INF/lib下</li>
-<li>将solr5.5/server/resoures文件夹下log4j.properties文件复制到Tomcat目录webapps/solr/WEB-INF/classes下，如果没有classes文件夹请新建</li>
-<li>在D盘重新建立一个solr_home文件夹，此文件夹不同于Tomcat下的solr文件夹可以随意存放，再将solr5.5/server/solr目录下的文件复制到此目录下。</li>
-<li>保存关闭，而后启动Tomcat，在浏览器输入<a href="http://localhost:8080/solr/admin.html即可出现solr的管理界面。" target="_blank" rel="external">http://localhost:8080/solr/admin.html即可出现solr的管理界面。</a><br><img src="/images/admin-html.png" alt="solr管理界面"><br>到此solr的安装完毕</li>
-</ol>
-<hr>
-<h2 id="Solr的core配置"><a href="#Solr的core配置" class="headerlink" title="Solr的core配置"></a>Solr的core配置</h2><ol>
-<li>在D:/solr_home目录下新建一个collection1文件夹。<br><img src="/images/collect-floder.png" alt="新建文件夹"></li>
-<li>复制solr5.5/server/solr/configsets/basic_configs下的conf文件夹到D:/solr_home/collection1目录下。</li>
-<li>在浏览器中输入<a href="http://localhost:8080/solr/admin.html地址点击左侧Core" target="_blank" rel="external">http://localhost:8080/solr/admin.html地址点击左侧Core</a> Admin栏中的Add Core如下图:<br><img src="/images/admin-core.png" alt="添加core配置"><br>其中 name和instanceDir都填写collection1,其他的保持不变，然后选择Add Core的按钮。<br>添加成功后如图所示：<br><img src="/images/core-successfully.png" alt="core成功添加"><br>致此，Solr的core配置完成。</li>
-</ol>
-<hr>
-<h2 id="为Solr添加IK分词插件"><a href="#为Solr添加IK分词插件" class="headerlink" title="为Solr添加IK分词插件"></a>为Solr添加IK分词插件</h2><p>首先，我们得先下载好IK的jar包请点击<a href="http://files.cnblogs.com/files/qinxuanyu/ik%E5%88%86%E8%AF%8Dsolr5.x.rar" target="_blank" rel="external">下载</a>，接下来我们队下载的文件进行配置。</p>
-<ol>
-<li>先将IKAnalyzer2012FF_u2.jar文件复制到Tomcat目录webapps/solr/WEB-INF/lib下。</li>
-<li>将IKAnalyzer.cfg.xml和stopword.dic复制到Tomcat目录webapps/solr/WEB-INF/classes下。</li>
-<li><p>修改D:/solr_home/collection1/conf目录下managed-schema文件，在文件中增加如下结点：</p>
-<p> <field name="solrname" type="text_ik" indexed="true" stored="true" omitnorms="true"><br><fieldtype name="text_ik" class="solr.TextField"><br> <analyzer class="org.wltea.analyzer.lucene.IKAnalyzer"><br> </analyzer></fieldtype></field></p>
-</li>
-<li>启动Tomcat，在浏览器中输入<a href="http://localhost:8080/solr/admin.html在页面左侧菜单中选择Core为collection1，点击Analysis菜单，在右侧右面Field" target="_blank" rel="external">http://localhost:8080/solr/admin.html在页面左侧菜单中选择Core为collection1，点击Analysis菜单，在右侧右面Field</a> Value文本框中输入要测试分词的中文串，并且将FieldType：选择为solrname再点击Analysis Value按钮。如下图所示：<br><img src="/images/segments.png" alt="分词操作"><br>到此分词操作已经配置完成。</li>
-</ol>
-<hr>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ol>
-<li>在刚开始配置Solr时，我下载的是solr6.0，由于不想使用它自带的server所以我使用Tomcat配置，但是，经过多番试验，总是打开得到的是网页报500错误。</li>
-</ol>
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml]; nested exception is java.lang.IllegalStateException: Context namespace element ‘annotation-config’ and its parser class [org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser] are only available on JDK 1.5 and higher，看源码是org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser自动检测，jdk版本检测时需要jre1.5以上版本，但是JdkVersion只检查到了1.7，jre1.8 时不匹配任何jdk, 下面是一些解决方法</p>
+<h3 id="问题解决一"><a href="#问题解决一" class="headerlink" title="问题解决一"></a>问题解决一</h3><pre><code>public abstract class JdkVersion {
+    public static final int JAVA_13 = 0;
+    public static final int JAVA_14 = 1;
+    public static final int JAVA_15 = 2;
+    public static final int JAVA_16 = 3;
+    public static final int JAVA_17 = 4;
+    //for jre 1.8
+    public static final int JAVA_18 = 5;
+    private static final String javaVersion = System.getProperty(&quot;java.version&quot;);
+     private static final int majorJavaVersion;
+     public static String getJavaVersion() {
+        return javaVersion;
+    }
+    public static int getMajorJavaVersion() {
+        return majorJavaVersion;
+    }
+    public static boolean isAtLeastJava14() {
+        return true;
+    }
+    public static boolean isAtLeastJava15() {
+        return getMajorJavaVersion() &gt;= 2;
+    }
+    public static boolean isAtLeastJava16() {
+        return getMajorJavaVersion() &gt;= 3;
+    }
+    static {
+        //for jre 1.8
+        if (javaVersion.indexOf(&quot;1.8.&quot;) != -1) {
+            majorJavaVersion = 5;
+        }else if (javaVersion.indexOf(&quot;1.7.&quot;) != -1) {
+            majorJavaVersion = 4;
+        } else if (javaVersion.indexOf(&quot;1.6.&quot;) != -1) {
+            majorJavaVersion = 3;
+        } else if (javaVersion.indexOf(&quot;1.5.&quot;) != -1) {
+            majorJavaVersion = 2;
+        } else {
+            majorJavaVersion = 1;
+        }
+    }
+}
+</code></pre><h3 id="问题解决二"><a href="#问题解决二" class="headerlink" title="问题解决二"></a>问题解决二</h3><p>这个方法大家都知道，就是在电脑上再装一个jdk1.7的版本在运行此项目是切换jdk版本，就OK了。</p>
 
       
     </div>
@@ -355,17 +344,13 @@ Solr的环境搭建
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/31/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2016/06/01/markdown菜鸟试飞/" rel="next" title="markdown菜鸟试飞">
+                <i class="fa fa-chevron-left"></i> markdown菜鸟试飞
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/01/markdown菜鸟试飞/" rel="prev" title="markdown菜鸟试飞">
-                markdown菜鸟试飞 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -391,8 +376,8 @@ Solr的环境搭建
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/31/Solr的初次使用/"
-           data-title="Solr的初次使用" data-url="http://yoursite.com/2016/05/31/Solr的初次使用/">
+      <div class="ds-thread" data-thread-key="2016/09/23/spring2-5在jre8中的问题/"
+           data-title="spring2.5在jre8中的问题" data-url="http://yoursite.com/2016/09/23/spring2-5在jre8中的问题/">
       </div>
     
   </div>
@@ -469,7 +454,7 @@ Solr的环境搭建
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#初次使用Solr"><span class="nav-number">1.</span> <span class="nav-text">初次使用Solr</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Solr的环境搭建"><span class="nav-number">1.1.</span> <span class="nav-text">Solr的环境搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solr的core配置"><span class="nav-number">1.2.</span> <span class="nav-text">Solr的core配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为Solr添加IK分词插件"><span class="nav-number">1.3.</span> <span class="nav-text">为Solr添加IK分词插件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遇到的问题"><span class="nav-number">1.4.</span> <span class="nav-text">遇到的问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题解决一"><span class="nav-number">2.</span> <span class="nav-text">问题解决一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题解决二"><span class="nav-number">3.</span> <span class="nav-text">问题解决二</span></a></li></ol></div>
             
           </div>
         </section>

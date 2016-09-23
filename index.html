@@ -86,12 +86,12 @@
 
 <meta name="description" content="Nothing it&apos;s impossible.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Mclixin's Blog">
+<meta property="og:title" content="Lucio's Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Mclixin's Blog">
+<meta property="og:site_name" content="Lucio's Blog">
 <meta property="og:description" content="Nothing it&apos;s impossible.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mclixin's Blog">
+<meta name="twitter:title" content="Lucio's Blog">
 <meta name="twitter:description" content="Nothing it&apos;s impossible.">
 
 
@@ -110,7 +110,7 @@
   };
 </script>
 
-  <title> Mclixin's Blog </title>
+  <title> Lucio's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -143,7 +143,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Mclixin's Blog</span>
+      <span class="site-title">Lucio's Blog</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -211,6 +211,148 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/23/spring2-5在jre8中的问题/" itemprop="url">
+                  spring2.5在jre8中的问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-23T11:25:48+08:00" content="2016-09-23">
+              2016-09-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/23/spring2-5在jre8中的问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/23/spring2-5在jre8中的问题/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml]; nested exception is java.lang.IllegalStateException: Context namespace element ‘annotation-config’ and its parser class [org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser] are only available on JDK 1.5 and higher，看源码是org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser自动检测，jdk版本检测时需要jre1.5以上版本，但是JdkVersion只检查到了1.7，jre1.8 时不匹配任何jdk, 下面是一些解决方法</p>
+<h3 id="问题解决一"><a href="#问题解决一" class="headerlink" title="问题解决一"></a>问题解决一</h3><pre><code>public abstract class JdkVersion {
+    public static final int JAVA_13 = 0;
+    public static final int JAVA_14 = 1;
+    public static final int JAVA_15 = 2;
+    public static final int JAVA_16 = 3;
+    public static final int JAVA_17 = 4;
+    //for jre 1.8
+    public static final int JAVA_18 = 5;
+    private static final String javaVersion = System.getProperty(&quot;java.version&quot;);
+     private static final int majorJavaVersion;
+     public static String getJavaVersion() {
+        return javaVersion;
+    }
+    public static int getMajorJavaVersion() {
+        return majorJavaVersion;
+    }
+    public static boolean isAtLeastJava14() {
+        return true;
+    }
+    public static boolean isAtLeastJava15() {
+        return getMajorJavaVersion() &gt;= 2;
+    }
+    public static boolean isAtLeastJava16() {
+        return getMajorJavaVersion() &gt;= 3;
+    }
+    static {
+        //for jre 1.8
+        if (javaVersion.indexOf(&quot;1.8.&quot;) != -1) {
+            majorJavaVersion = 5;
+        }else if (javaVersion.indexOf(&quot;1.7.&quot;) != -1) {
+            majorJavaVersion = 4;
+        } else if (javaVersion.indexOf(&quot;1.6.&quot;) != -1) {
+            majorJavaVersion = 3;
+        } else if (javaVersion.indexOf(&quot;1.5.&quot;) != -1) {
+            majorJavaVersion = 2;
+        } else {
+            majorJavaVersion = 1;
+        }
+    }
+}
+</code></pre><h3 id="问题解决二"><a href="#问题解决二" class="headerlink" title="问题解决二"></a>问题解决二</h3><p>这个方法大家都知道，就是在电脑上再装一个jdk1.7的版本在运行此项目是切换jdk版本，就OK了。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -430,249 +572,13 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/31/Solr的初次使用/" itemprop="url">
-                  Solr的初次使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-31T21:48:02+08:00" content="2016-05-31">
-              2016-05-31
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/31/Solr的初次使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/31/Solr的初次使用/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="初次使用Solr"><a href="#初次使用Solr" class="headerlink" title="初次使用Solr"></a>初次使用Solr</h1><hr>
-<p>通过这个简单的方法我们可以知道如何在Tomcat7中配置solr5.5</p>
-<h2 id="Solr的环境搭建"><a href="#Solr的环境搭建" class="headerlink" title="Solr的环境搭建"></a>Solr的环境搭建</h2><ol>
-<li>我使用的是Solr5.5+Tomcat7.0搭建。</li>
-<li>将solr5.5/server/solr-webapp目录下的webapp文件夹copy到tomcat7下webapps下，并将其改名为solr。</li>
-<li>修改tomcat7/webapps/solr/WEB-INF目录下的web.xml文件，如图：<br><img src="/images/web-xml.png" alt="web-xml"></li>
-<li>将solr5.5/server/lib/ext下的文件复制到Tomcat目录webapps/solr/WEB-INF/lib下</li>
-<li>将solr5.5/server/resoures文件夹下log4j.properties文件复制到Tomcat目录webapps/solr/WEB-INF/classes下，如果没有classes文件夹请新建</li>
-<li>在D盘重新建立一个solr_home文件夹，此文件夹不同于Tomcat下的solr文件夹可以随意存放，再将solr5.5/server/solr目录下的文件复制到此目录下。</li>
-<li>保存关闭，而后启动Tomcat，在浏览器输入<a href="http://localhost:8080/solr/admin.html即可出现solr的管理界面。" target="_blank" rel="external">http://localhost:8080/solr/admin.html即可出现solr的管理界面。</a><br><img src="/images/admin-html.png" alt="solr管理界面"><br>到此solr的安装完毕</li>
-</ol>
-<hr>
-<h2 id="Solr的core配置"><a href="#Solr的core配置" class="headerlink" title="Solr的core配置"></a>Solr的core配置</h2><ol>
-<li>在D:/solr_home目录下新建一个collection1文件夹。<br><img src="/images/collect-floder.png" alt="新建文件夹"></li>
-<li>复制solr5.5/server/solr/configsets/basic_configs下的conf文件夹到D:/solr_home/collection1目录下。</li>
-<li>在浏览器中输入<a href="http://localhost:8080/solr/admin.html地址点击左侧Core" target="_blank" rel="external">http://localhost:8080/solr/admin.html地址点击左侧Core</a> Admin栏中的Add Core如下图:<br><img src="/images/admin-core.png" alt="添加core配置"><br>其中 name和instanceDir都填写collection1,其他的保持不变，然后选择Add Core的按钮。<br>添加成功后如图所示：<br><img src="/images/core-successfully.png" alt="core成功添加"><br>致此，Solr的core配置完成。</li>
-</ol>
-<hr>
-<h2 id="为Solr添加IK分词插件"><a href="#为Solr添加IK分词插件" class="headerlink" title="为Solr添加IK分词插件"></a>为Solr添加IK分词插件</h2><p>首先，我们得先下载好IK的jar包请点击<a href="http://files.cnblogs.com/files/qinxuanyu/ik%E5%88%86%E8%AF%8Dsolr5.x.rar" target="_blank" rel="external">下载</a>，接下来我们队下载的文件进行配置。</p>
-<ol>
-<li>先将IKAnalyzer2012FF_u2.jar文件复制到Tomcat目录webapps/solr/WEB-INF/lib下。</li>
-<li>将IKAnalyzer.cfg.xml和stopword.dic复制到Tomcat目录webapps/solr/WEB-INF/classes下。</li>
-<li><p>修改D:/solr_home/collection1/conf目录下managed-schema文件，在文件中增加如下结点：</p>
-<p> <field name="solrname" type="text_ik" indexed="true" stored="true" omitnorms="true"><br><fieldtype name="text_ik" class="solr.TextField"><br> <analyzer class="org.wltea.analyzer.lucene.IKAnalyzer"><br> </analyzer></fieldtype></field></p>
-</li>
-<li>启动Tomcat，在浏览器中输入<a href="http://localhost:8080/solr/admin.html在页面左侧菜单中选择Core为collection1，点击Analysis菜单，在右侧右面Field" target="_blank" rel="external">http://localhost:8080/solr/admin.html在页面左侧菜单中选择Core为collection1，点击Analysis菜单，在右侧右面Field</a> Value文本框中输入要测试分词的中文串，并且将FieldType：选择为solrname再点击Analysis Value按钮。如下图所示：<br><img src="/images/segments.png" alt="分词操作"><br>到此分词操作已经配置完成。</li>
-</ol>
-<hr>
-<h2 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h2><ol>
-<li>在刚开始配置Solr时，我下载的是solr6.0，由于不想使用它自带的server所以我使用Tomcat配置，但是，经过多番试验，总是打开得到的是网页报500错误。</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/31/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-31T16:38:02+08:00" content="2016-05-31">
-              2016-05-31
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/05/31/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/31/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -704,14 +610,14 @@
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
-               alt="Mclixin" />
-          <p class="site-author-name" itemprop="name">Mclixin</p>
+               alt="lucio" />
+          <p class="site-author-name" itemprop="name">lucio</p>
           <p class="site-description motion-element" itemprop="description">Nothing it's impossible.</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -755,7 +661,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Mclixin</span>
+  <span class="author" itemprop="copyrightHolder">lucio</span>
 </div>
 
 <div class="powered-by">
