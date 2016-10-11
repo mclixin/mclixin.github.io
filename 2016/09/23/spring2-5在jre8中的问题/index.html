@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="问题描述由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml]; nes">
+<meta name="description" content="问题描述由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml];nest">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring2.5在jre8中的问题">
 <meta property="og:url" content="http://yoursite.com/2016/09/23/spring2-5在jre8中的问题/index.html">
 <meta property="og:site_name" content="Lucio's Blog">
-<meta property="og:description" content="问题描述由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml]; nes">
-<meta property="og:updated_time" content="2016-09-23T03:43:49.992Z">
+<meta property="og:description" content="问题描述由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml];nest">
+<meta property="og:updated_time" content="2016-09-23T10:01:28.492Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring2.5在jre8中的问题">
-<meta name="twitter:description" content="问题描述由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml]; nes">
+<meta name="twitter:description" content="问题描述由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml];nest">
 
 
 
@@ -278,7 +278,8 @@
       
 
       
-        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml]; nested exception is java.lang.IllegalStateException: Context namespace element ‘annotation-config’ and its parser class [org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser] are only available on JDK 1.5 and higher，看源码是org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser自动检测，jdk版本检测时需要jre1.5以上版本，但是JdkVersion只检查到了1.7，jre1.8 时不匹配任何jdk, 下面是一些解决方法</p>
+        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml];nested exception is java.lang.IllegalStateException:Context namespace element ‘annotation-config’ and its parser class [org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser] are only available on JDK1.5 and higher，看源码是org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser自动检测，jdk版本检测时需要jre1.5以上版本，但是JdkVersion只检查到了1.7，jre1.8 时不匹配任何jdk, 下面是一些解决方法</p>
+<a id="more"></a>
 <h3 id="问题解决一"><a href="#问题解决一" class="headerlink" title="问题解决一"></a>问题解决一</h3><pre><code>public abstract class JdkVersion {
     public static final int JAVA_13 = 0;
     public static final int JAVA_14 = 1;
@@ -352,6 +353,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2016/10/10/只读模式下-FlushMode-NEVER-MANUAL-写操作不被允许/" rel="prev" title="只读模式下(FlushMode.NEVER/MANUAL)写操作不被允许">
+                只读模式下(FlushMode.NEVER/MANUAL)写操作不被允许 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -422,7 +427,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

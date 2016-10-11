@@ -233,6 +233,109 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/10/只读模式下-FlushMode-NEVER-MANUAL-写操作不被允许/" itemprop="url">
+                  只读模式下(FlushMode.NEVER/MANUAL)写操作不被允许
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-10T17:29:03+08:00" content="2016-10-10">
+              2016-10-10
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/10/只读模式下-FlushMode-NEVER-MANUAL-写操作不被允许/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/10/只读模式下-FlushMode-NEVER-MANUAL-写操作不被允许/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述:"></a>问题描述:</h3><p>只读模式下(FlushMode.NEVER/MANUAL)写操作不被允许：把你的Session改成FlushMode.COMMIT/AUTO或者清除事务定义中的readOnly标记。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/10/只读模式下-FlushMode-NEVER-MANUAL-写操作不被允许/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/23/spring2-5在jre8中的问题/" itemprop="url">
                   spring2.5在jre8中的问题
                 </a>
@@ -283,51 +386,12 @@
 
       
         
-          
-            <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml]; nested exception is java.lang.IllegalStateException: Context namespace element ‘annotation-config’ and its parser class [org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser] are only available on JDK 1.5 and higher，看源码是org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser自动检测，jdk版本检测时需要jre1.5以上版本，但是JdkVersion只检查到了1.7，jre1.8 时不匹配任何jdk, 下面是一些解决方法</p>
-<h3 id="问题解决一"><a href="#问题解决一" class="headerlink" title="问题解决一"></a>问题解决一</h3><pre><code>public abstract class JdkVersion {
-    public static final int JAVA_13 = 0;
-    public static final int JAVA_14 = 1;
-    public static final int JAVA_15 = 2;
-    public static final int JAVA_16 = 3;
-    public static final int JAVA_17 = 4;
-    //for jre 1.8
-    public static final int JAVA_18 = 5;
-    private static final String javaVersion = System.getProperty(&quot;java.version&quot;);
-     private static final int majorJavaVersion;
-     public static String getJavaVersion() {
-        return javaVersion;
-    }
-    public static int getMajorJavaVersion() {
-        return majorJavaVersion;
-    }
-    public static boolean isAtLeastJava14() {
-        return true;
-    }
-    public static boolean isAtLeastJava15() {
-        return getMajorJavaVersion() &gt;= 2;
-    }
-    public static boolean isAtLeastJava16() {
-        return getMajorJavaVersion() &gt;= 3;
-    }
-    static {
-        //for jre 1.8
-        if (javaVersion.indexOf(&quot;1.8.&quot;) != -1) {
-            majorJavaVersion = 5;
-        }else if (javaVersion.indexOf(&quot;1.7.&quot;) != -1) {
-            majorJavaVersion = 4;
-        } else if (javaVersion.indexOf(&quot;1.6.&quot;) != -1) {
-            majorJavaVersion = 3;
-        } else if (javaVersion.indexOf(&quot;1.5.&quot;) != -1) {
-            majorJavaVersion = 2;
-        } else {
-            majorJavaVersion = 1;
-        }
-    }
-}
-</code></pre><h3 id="问题解决二"><a href="#问题解决二" class="headerlink" title="问题解决二"></a>问题解决二</h3><p>这个方法大家都知道，就是在电脑上再装一个jdk1.7的版本在运行此项目是切换jdk版本，就OK了。</p>
-
-          
+          <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml];nested exception is java.lang.IllegalStateException:Context namespace element ‘annotation-config’ and its parser class [org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser] are only available on JDK1.5 and higher，看源码是org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser自动检测，jdk版本检测时需要jre1.5以上版本，但是JdkVersion只检查到了1.7，jre1.8 时不匹配任何jdk, 下面是一些解决方法</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/09/23/spring2-5在jre8中的问题/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -425,125 +489,228 @@
 
       
         
+          <h1 id="MarkDown的简单使用"><a href="#MarkDown的简单使用" class="headerlink" title="MarkDown的简单使用"></a>MarkDown的简单使用</h1><p>&emsp;&emsp;Markdown是一种流行的标记语言，通常为程序员所使用，但是它实际上是个非常简单、非常<br>容易学习的语法。接下来，就简单的介绍下Mardown。后面还有丰富的Mardown的编辑器提供给大家参考。</p>
+<hr>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/06/01/markdown菜鸟试飞/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/31/Solr的初次使用/" itemprop="url">
+                  Solr的初次使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-31T21:48:02+08:00" content="2016-05-31">
+              2016-05-31
+            </time>
+          </span>
+
           
-            <h1 id="MarkDown的简单使用"><a href="#MarkDown的简单使用" class="headerlink" title="MarkDown的简单使用"></a>MarkDown的简单使用</h1><p>&emsp;&emsp;Markdown是一种流行的标记语言，通常为程序员所使用，但是它实际上是个非常简单、非常<br>容易学习的语法。接下来，就简单的介绍下Mardown。后面还有丰富的Mardown的编辑器提供给大家参考。</p>
-<hr>
-<h2 id="段落和换行"><a href="#段落和换行" class="headerlink" title="段落和换行"></a>段落和换行</h2><p>&emsp;&emsp;Mardown以一段完整的空行作为段落间隔。</p>
-<hr>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><p>&emsp;&emsp;Mardown在每一行的首部插入1-6个 <code>#</code> 符号，对应到标题的1到6阶， <code>#</code> 符号和标题之间需要一个空格，例如：</p>
-<blockquote>
-<p><code>#</code> 这是一级标题 </p>
-<p><code>##</code> 这是二级标题</p>
-<p><code>###</code> 这是三级标题</p>
-<p><code>####</code> 这是四级标题</p>
-<p><code>#####</code> 这是五级标题</p>
-<p><code>######</code> 这是六级标题</p>
-</blockquote>
-<p>如下图所示：<br><img src="images/biaoti.png" alt="标题"></p>
-<hr>
-<h2 id="区块引用"><a href="#区块引用" class="headerlink" title="区块引用"></a>区块引用</h2><p>&emsp;&emsp;Markdown标记区块引用是使用类似e-mail中用 <code>&gt;</code> 的引用方式，在需要引用的文字之前使用 <code>&gt;</code> 符号即可，注意在 <code>&gt;</code> 符号与引文之间需要一个空格。</p>
-<p>&emsp;&emsp;当需要进行区块引用，也就是多段引用时，只需要在每段之前都加上 <code>&gt;</code> 符号，包括空行。</p>
-<p>&emsp;&emsp;引用允许嵌套使用，引文内的引文只需要连续使用 <code>&gt;</code> 符号即可。</p>
-<p>&emsp;&emsp;引文内任何Markdown语法依旧生效，比如列表、标题等。例如：</p>
-<blockquote>
-<p><code>&gt;</code> 这是引文的第一段</p>
-<p><code>&gt;</code> 这是引文的第二段</p>
-<blockquote>
-<p><code>&gt;&gt;</code> 这是内嵌的二级引文</p>
-</blockquote>
-<p><code>###</code> 引文内还可以使用标题等其他语法标记 </p>
-</blockquote>
-<p>如图所示：<br><img src="images/blocks.png" alt="区块"></p>
-<hr>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>&emsp;&emsp;Mardown支持非常直观的无序列表和有序列表。</p>
-<h3 id="无序列表"><a href="#无序列表" class="headerlink" title="无序列表"></a>无序列表</h3><p>&emsp;&emsp;无序列表使用 <code>+</code> 加号， <code>-</code> 减号和 <code>*</code> 星号加空格来标识，列表的嵌套使用 <code>tab</code> 制表符缩进，例如：</p>
-<blockquote>
-<p> 这是一个无序列表</p>
-<p><code>+</code> 项目1  </p>
-<p><code>+</code> 项目2 </p>
-<p><code>+</code> 项目3  </p>
-<p> 这是一个无序列表</p>
-<p><code>-</code> 项目1  </p>
-<p><code>-</code> 项目2</p>
-<p>&emsp;&emsp;<code>-</code>项目2.1 </p>
-<p>&emsp;&emsp;<code>-</code>项目2.2 </p>
-<p><code>-</code> 项目3  </p>
-<p>这是一个无序列表</p>
-<p><code>*</code> 项目1</p>
-<p><code>*</code> 项目2</p>
-<p><code>*</code> 项目3</p>
-<p>&emsp;&emsp;<code>*</code> 项目3.1</p>
-<p>&emsp;&emsp;&emsp;&emsp;<code>*</code> 项目3.1.1 </p>
-</blockquote>
-<p>如下图所示：<br><img src="images/unorderlist.png" alt="无序列表"></p>
-<h3 id="有序列表"><a href="#有序列表" class="headerlink" title="有序列表"></a>有序列表</h3><p>&emsp;&emsp;当然有序列表也非常直观，只需要使用数字接着一个 <code>.</code> 英文句点然后空格，就可以标识一个有序列表了。在这里<strong>任何一个数字</strong>都可以触发<strong>有序</strong>列表，并按正确的<strong>数序</strong>显示。例如：</p>
-<blockquote>
-<p>这是一个有序列表</p>
-<p><code>1.</code> 项目一</p>
-<p><code>2.</code> 项目二</p>
-<p><code>3.</code> 项目三</p>
-<p>这也是一个有序列表</p>
-<p><code>8.</code> 项目一</p>
-<p><code>1.</code> 项目二</p>
-<p><code>2.</code> 项目三</p>
-</blockquote>
-<p>如下图所示：<br><img src="images/orderlist.png" alt="有序列表"></p>
-<hr>
-<h2 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h2><p>&emsp;&emsp;Mardown使用 <code>*</code> 星号和 <code>_</code> 下划线作为标记强调字段的符号，被一个 <code>*</code> 或 <code>_</code> 包围的字词会被显示为 <em>斜体</em> ，用两个 <code>*</code> 或 <code>_</code> 包围起来的话，则会被显示为 <strong>粗体</strong> ，用三个 <code>*</code> 或 <code>_</code> 包围起来的话则会被显示为 <strong><em>粗斜体</em></strong> ，例如：</p>
-<blockquote>
-<p><code>_</code>我是一行斜体字<code>_</code></p>
-<p><code>**</code>我是一行粗体字<code>**</code></p>
-<p><code>***</code>我是一行粗斜体<code>***</code></p>
-</blockquote>
-<p>如下图所示：<br><img src="images/enough.png" alt="强调"></p>
-<hr>
-<h2 id="代码标识和代码块"><a href="#代码标识和代码块" class="headerlink" title="代码标识和代码块"></a>代码标识和代码块</h2><p>&emsp;&emsp;作为一名IT人员，有时要往自己的文稿中写入大量的代码，则Mardown可以很好的实现，并且代码区块中的所有输入都会按照原样输出，包括连续的空格。</p>
-<p>&emsp;&emsp;Mardown中代码标识主要有行内代码和代码区块两种。行内代码用一对`反引号` 标识。例如：</p>
-<blockquote>
-<p>我是一个 `Alt` 键，当我设置变量 `int a = 20;`时，就可以内嵌行代码了。</p>
-</blockquote>
-<p>如下图所示：<br><img src="images/hncode.png" alt="行内代码"></p>
-<p>&emsp;&emsp;当需要输入大段的代码时，只需要用一对连续3个 ``` 反引号 ``` 将代码区块包围起来就可以了，如图所示：<br><img src="images/bkcode.png" alt="代码块"></p>
-<hr>
-<h2 id="插入链接"><a href="#插入链接" class="headerlink" title="插入链接"></a>插入链接</h2><p>&emsp;&emsp; Mardown支持两种形式的链接语法，行内式和参考式。<br>现在我就介绍下行内式语法。</p>
-<p><strong>行内式</strong>的语法如下：</p>
-<blockquote>
-<p>[链接文字](链接地址)</p>
-<p>[链接文字](链接地址 “title属性” )</p>
-</blockquote>
-<p>&emsp;&emsp;其中(链接地址)\如果是绝对地址记住加上<code>http://</code>,<code>title 属性</code>是指鼠标移到链接上显示的文字。</p>
-<hr>
-<h2 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h2><p>&emsp;&emsp;插入图片的语法和插入链接类似，只需在链接的语法前面加一个<code>!</code>感叹号就可以了，如下所示：</p>
-<blockquote>
-<p>![链接文字](链接地址)</p>
-<p>![链接文字](链接地址 “title属性” )</p>
-</blockquote>
-<hr>
-<p>这里就是Mardown的基本语法了，接下来我将介绍一些常用的Mardown的编辑工具。</p>
-<hr>
-<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><p>&emsp;&emsp;表格是纯文本格式文字比较难以表达的一个部分，Markdown 在这一点上做的也不是非常出<br>彩，下面的例子是一个表格绘制语法的展示：<br><img src="images/table.png" alt="表格"></p>
-<hr>
-<h2 id="编辑工具"><a href="#编辑工具" class="headerlink" title="编辑工具"></a>编辑工具</h2><h3 id="在线的Mardown编辑器"><a href="#在线的Mardown编辑器" class="headerlink" title="在线的Mardown编辑器"></a>在线的Mardown编辑器</h3><ol>
-<li><p><a href="http://dillinger.io/" target="_blank" rel="external">dillinger</a> 漂亮强大，支持md, html, pdf 文件导出。支持dropbox, onedrive，google drive, github. 来自国外，可能不够稳定。<br><img src="images/dillinger.jpg" alt="dillinger"></p>
-</li>
-<li><p><a href="http://mahua.jser.me/" target="_blank" rel="external">MaHua</a> 小众软件推荐，界面有些简陋。<br><img src="images/MaHua.jpg" alt="MaHua"></p>
-</li>
-<li><p><a href="http://www.jianshu.com/" target="_blank" rel="external">简书</a> 一个很不错的博客平台，每几秒钟便会自动存入一个备份。可以直接从本地拖入照片生成链接，一直在不断优化。作为一个博客平台，需要注册账号后方能进行写作。<br><img src="images/samp.jpg" alt="简书"></p>
-</li>
-</ol>
-<hr>
-<h3 id="Windows平台编辑器"><a href="#Windows平台编辑器" class="headerlink" title="Windows平台编辑器"></a>Windows平台编辑器</h3><ol>
-<li><p><a href="http://www.markdownpad.com/" target="_blank" rel="external">MarkdownPad</a> 一款全功能的编辑器，被很多人称赞为windows 平台最好用的markdown编辑器.<br><img src="images/markdownPad.png" alt="MarkdownPad"></p>
-</li>
-<li><p><a href="http://www.appinn.com/miu-markdown-editor/" target="_blank" rel="external">Miu</a> 一款模仿mou 的windows平台markdown编辑器，小众推荐，必属精品，官网无法打开，好在小众提供了百度云下载。界面美观，功能不够成熟.<br><img src="images/Miu.jpg" alt="Miu"></p>
-</li>
-</ol>
-<p><strong>其他的</strong>一些编辑器大家可以上<a href="http://www.williamlong.info/archives/4319.html" target="_blank" rel="external">月光博客</a>浏览，我这里只介绍了一部分。</p>
-<p><strong>其他的一些Markdown学习资料，可以上下面几个网址</strong></p>
-<ul>
-<li><a href="http://justcoding.iteye.com/blog/1954655" target="_blank" rel="external">Markdown快速入门</a></li>
-<li><a href="http://www.jianshu.com/p/1e402922ee32" target="_blank" rel="external">Markdown入门指南</a></li>
-</ul>
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/31/Solr的初次使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/31/Solr的初次使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="初次使用Solr"><a href="#初次使用Solr" class="headerlink" title="初次使用Solr"></a>初次使用Solr</h1><hr>
+<p>通过这个简单的方法我们可以知道如何在Tomcat7中配置solr5.5</p>
+<h2 id="Solr的环境搭建"><a href="#Solr的环境搭建" class="headerlink" title="Solr的环境搭建"></a>Solr的环境搭建</h2><ol>
+<li>我使用的是Solr5.5+Tomcat7.0搭建。</li>
+<li>将solr5.5/server/solr-webapp目录下的webapp文件夹copy到tomcat7下webapps下，并将其改名为solr。</li>
+<li>修改tomcat7/webapps/solr/WEB-INF目录下的web.xml文件，如图：<br><img src="/images/web-xml.png" alt="web-xml">
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/05/31/Solr的初次使用/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/31/hello-world/" itemprop="url">
+                  Hello World
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-31T16:38:02+08:00" content="2016-05-31">
+              2016-05-31
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/31/hello-world/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/31/hello-world/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 
           
         
@@ -575,10 +742,6 @@
   </section>
 
   
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
 
 
           </div>
@@ -617,7 +780,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
