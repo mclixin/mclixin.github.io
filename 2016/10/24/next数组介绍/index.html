@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="问题描述由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml];nest">
+<meta name="description" content="首先看看next数组值的求解方法例如：模式串 a b a a b c a c 
+next值 0 1 1 2 2 3 1 2 
+next数组的求解方法是：第一位的next值为0，第二位的next值为1，后面求解每一位的next值时，根据前一位进行比较。首先将前一位与其next值对应的内容进行比较，如果相等，则该位的next值就是前一位的next值加上1；如果不等，向前继续寻找next值对应的内容来与">
 <meta property="og:type" content="article">
-<meta property="og:title" content="spring2.5在jre8中的问题">
-<meta property="og:url" content="http://yoursite.com/2016/09/23/spring2-5在jre8中的问题/index.html">
+<meta property="og:title" content="next数组介绍">
+<meta property="og:url" content="http://yoursite.com/2016/10/24/next数组介绍/index.html">
 <meta property="og:site_name" content="Lucio's Blog">
-<meta property="og:description" content="问题描述由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml];nest">
-<meta property="og:updated_time" content="2016-09-23T10:01:28.492Z">
+<meta property="og:description" content="首先看看next数组值的求解方法例如：模式串 a b a a b c a c 
+next值 0 1 1 2 2 3 1 2 
+next数组的求解方法是：第一位的next值为0，第二位的next值为1，后面求解每一位的next值时，根据前一位进行比较。首先将前一位与其next值对应的内容进行比较，如果相等，则该位的next值就是前一位的next值加上1；如果不等，向前继续寻找next值对应的内容来与">
+<meta property="og:updated_time" content="2016-10-24T02:48:37.788Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="spring2.5在jre8中的问题">
-<meta name="twitter:description" content="问题描述由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml];nest">
+<meta name="twitter:title" content="next数组介绍">
+<meta name="twitter:description" content="首先看看next数组值的求解方法例如：模式串 a b a a b c a c 
+next值 0 1 1 2 2 3 1 2 
+next数组的求解方法是：第一位的next值为0，第二位的next值为1，后面求解每一位的next值时，根据前一位进行比较。首先将前一位与其next值对应的内容进行比较，如果相等，则该位的next值就是前一位的next值加上1；如果不等，向前继续寻找next值对应的内容来与">
 
 
 
@@ -111,7 +117,7 @@
   };
 </script>
 
-  <title> spring2.5在jre8中的问题 | Lucio's Blog </title>
+  <title> next数组介绍 | Lucio's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -231,7 +237,7 @@
             
             
               
-                spring2.5在jre8中的问题
+                next数组介绍
               
             
           </h1>
@@ -243,8 +249,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-23T11:25:48+08:00" content="2016-09-23">
-              2016-09-23
+            <time itemprop="dateCreated" datetime="2016-10-24T10:32:34+08:00" content="2016-10-24">
+              2016-10-24
             </time>
           </span>
 
@@ -254,8 +260,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/23/spring2-5在jre8中的问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/23/spring2-5在jre8中的问题/" itemprop="commentsCount"></span>
+                <a href="/2016/10/24/next数组介绍/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/24/next数组介绍/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -278,49 +284,27 @@
       
 
       
-        <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>由于最近在学习ssh框架，使用的是spring2.56+hibernate3.3+Struts2.3，之前在台式机上用的jdk1.7，现在换到笔记本上作业用的jdk1.8，所以出现了如下问题：Unexpected exception parsing XML document from class path resource [applicationContext-dao.xml];nested exception is java.lang.IllegalStateException:Context namespace element ‘annotation-config’ and its parser class [org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser] are only available on JDK1.5 and higher，看源码是org.springframework.context.annotation.AnnotationConfigBeanDefinitionParser自动检测，jdk版本检测时需要jre1.5以上版本，但是JdkVersion只检查到了1.7，jre1.8 时不匹配任何jdk, 下面是一些解决方法</p>
+        <h3 id="首先看看next数组值的求解方法例如："><a href="#首先看看next数组值的求解方法例如：" class="headerlink" title="首先看看next数组值的求解方法例如："></a>首先看看next数组值的求解方法例如：</h3><pre><code>模式串 a b a a b c a c 
+next值 0 1 1 2 2 3 1 2 
+</code></pre><p>next数组的求解方法是：第一位的next值为0，第二位的next值为1，后面求解每一位的next值时，根据前一位进行比较。首先将前一位与其next值对应的内容进行比较，如果相等，则该位的next值就是前一位的next值加上1；如果不等，向前继续寻找next值对应的内容来与前一位进行比较，直到找到某个位上内容的next值对应的内容与前一位相等为止，则这个位对应的值加上1即为需求的next值；如果找到第一位都没有找到与前一位相等的内容，那么需求的位上的next值即为1。</p>
 <a id="more"></a>
-<h3 id="问题解决一"><a href="#问题解决一" class="headerlink" title="问题解决一"></a>问题解决一</h3><pre><code>public abstract class JdkVersion {
-    public static final int JAVA_13 = 0;
-    public static final int JAVA_14 = 1;
-    public static final int JAVA_15 = 2;
-    public static final int JAVA_16 = 3;
-    public static final int JAVA_17 = 4;
-    //for jre 1.8
-    public static final int JAVA_18 = 5;
-    private static final String javaVersion = System.getProperty(&quot;java.version&quot;);
-     private static final int majorJavaVersion;
-     public static String getJavaVersion() {
-        return javaVersion;
-    }
-    public static int getMajorJavaVersion() {
-        return majorJavaVersion;
-    }
-    public static boolean isAtLeastJava14() {
-        return true;
-    }
-    public static boolean isAtLeastJava15() {
-        return getMajorJavaVersion() &gt;= 2;
-    }
-    public static boolean isAtLeastJava16() {
-        return getMajorJavaVersion() &gt;= 3;
-    }
-    static {
-        //for jre 1.8
-        if (javaVersion.indexOf(&quot;1.8.&quot;) != -1) {
-            majorJavaVersion = 5;
-        }else if (javaVersion.indexOf(&quot;1.7.&quot;) != -1) {
-            majorJavaVersion = 4;
-        } else if (javaVersion.indexOf(&quot;1.6.&quot;) != -1) {
-            majorJavaVersion = 3;
-        } else if (javaVersion.indexOf(&quot;1.5.&quot;) != -1) {
-            majorJavaVersion = 2;
-        } else {
-            majorJavaVersion = 1;
-        }
-    }
-}
-</code></pre><h3 id="问题解决二"><a href="#问题解决二" class="headerlink" title="问题解决二"></a>问题解决二</h3><p>这个方法大家都知道，就是在电脑上再装一个jdk1.7的版本在运行此项目是切换jdk版本，就OK了。</p>
+<h3 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h3><p>看起来很令人费解，利用上面的例子具体运算一遍。</p>
+<ol>
+<li>前两位必定为0和1。</li>
+<li>计算第三位的时候，看第二位b的next值，为1，则把b和1对应的a进行比较，不同，则第三位a的next的值为1，因为一直比到最前一位，都没有发生比较相同的现象。</li>
+<li>计算第四位的时候，看第三位a的next值，为1，则把a和1对应的a进行比较，相同，则第四位a的next的值为第三位a的next值加上1。为2。因为是在第三位实现了其next值对应的值与第三位的值相同。</li>
+<li>计算第五位的时候，看第四位a的next值，为2，则把a和2对应的b进行比较，不同，则再将b对应的next值1对应的a与第四位的a进行比较，相同，则第五位的next值为第二位b的next值加上1，为2。因为是在第二位实现了其next值对应的值与第四位的值相同。</li>
+<li>计算第六位的时候，看第五位b的next值，为2，则把b和2对应的b进行比较，相同，则第六位c的next值为第五位b的next值加上1，为3，因为是在第五位实现了其next值对应的值与第五位相同。</li>
+<li>计算第七位的时候，看第六位c的next值，为3，则把c和3对应的a进行比较，不同，则再把第3位a的next值1对应的a与第六位c比较，仍然不同，则第七位的next值为1。</li>
+<li>计算第八位的时候，看第七位a的next值，为1，则把a和1对应的a进行比较，相同，则第八位c的next值为第七位a的next值加上1，为2，因为是在第七位和实现了其next值对应的值与第七位相同。</li>
+</ol>
+<h3 id="例题："><a href="#例题：" class="headerlink" title="例题："></a>例题：</h3><pre><code>串&apos;ababaaababaa&apos;的next数组为(）
+A、012345678999
+B、 0 12121111212
+C、011234223456
+D、 0123012322345
+答案：C
+</code></pre><p>转载地址：<br><a href="http://blog.csdn.NET/quitepig/article/details/7933977" target="_blank" rel="external">http://blog.csdn.NET/quitepig/article/details/7933977</a></p>
 
       
     </div>
@@ -345,17 +329,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/01/markdown菜鸟试飞/" rel="next" title="markdown菜鸟试飞">
-                <i class="fa fa-chevron-left"></i> markdown菜鸟试飞
+              <a href="/2016/10/10/只读模式下-FlushMode-NEVER-MANUAL-写操作不被允许/" rel="next" title="只读模式下(FlushMode.NEVER/MANUAL)写操作不被允许">
+                <i class="fa fa-chevron-left"></i> 只读模式下(FlushMode.NEVER/MANUAL)写操作不被允许
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/10/只读模式下-FlushMode-NEVER-MANUAL-写操作不被允许/" rel="prev" title="只读模式下(FlushMode.NEVER/MANUAL)写操作不被允许">
-                只读模式下(FlushMode.NEVER/MANUAL)写操作不被允许 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -381,8 +361,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/09/23/spring2-5在jre8中的问题/"
-           data-title="spring2.5在jre8中的问题" data-url="http://yoursite.com/2016/09/23/spring2-5在jre8中的问题/">
+      <div class="ds-thread" data-thread-key="2016/10/24/next数组介绍/"
+           data-title="next数组介绍" data-url="http://yoursite.com/2016/10/24/next数组介绍/">
       </div>
     
   </div>
@@ -459,7 +439,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题描述"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题解决一"><span class="nav-number">2.</span> <span class="nav-text">问题解决一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题解决二"><span class="nav-number">3.</span> <span class="nav-text">问题解决二</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先看看next数组值的求解方法例如："><span class="nav-number">1.</span> <span class="nav-text">首先看看next数组值的求解方法例如：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#具体流程"><span class="nav-number">2.</span> <span class="nav-text">具体流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例题："><span class="nav-number">3.</span> <span class="nav-text">例题：</span></a></li></ol></div>
             
           </div>
         </section>
